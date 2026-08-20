@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptography & Cipher Tools</title>
+  
+  <!-- CSS Styling -->
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f8fafc;
+      --accent-color: #38bdf8;
+      --button-bg: #0284c7;
+      --button-hover: #0369a1;
+      --border-color: #334155;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: var(--accent-color);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      margin-bottom: 2rem;
+    }
+
+    .tool-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input[type="text"], input[type="number"], textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-color);
+      font-family: monospace;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
+    .output-box {
+      margin-top: 1rem;
+      background-color: #090d16;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #64748b;
+      font-size: 0.875rem;
+    }
+  </style>
+
+  <!-- External Library CDNs loaded in <head> -->
+  <!-- CryptoJS for AES / Hashing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <!-- Base64 for Encoding/Decoding -->
+  <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.7/base64.min.js"></script>
+</head>
+<body>
+
+  <h1>Online Cipher & Crypto Tools</h1>
+  <p class="subtitle">A client-side dCode-style utility toolkit hosted on GitHub Pages.</p>
+
+  <!-- TOOL 1: AES ENCRYPTION / DECRYPTION -->
+  <div class="tool-card">
+    <h2>1. AES Cipher (Symmetric)</h2>
+    
+    <label for="aesKey">Passphrase / Secret Key:</label>
+    <input type="text" id="aesKey" placeholder="e.g. MySecretPassphrase123">
+
+    <label for="aesInput">Input Text:</label>
+    <textarea id="aesInput" rows="4" placeholder="Enter text to encrypt or decrypt..."></textarea>
+
+    <div class="button-group">
+      <button id="btnAesEncrypt">Encrypt</button>
+      <button id="btnAesDecrypt">Decrypt</button>
+    </div>
+
+    <label for="aesOutput">Result:</label>
+    <textarea id="aesOutput" class="output-box" rows="4" readonly placeholder="Result will appear here..."></textarea>
+  </div>
+
+  <!-- TOOL 2: CAESAR CIPHER -->
+  <div class="tool-card">
+    <h2>2. Caesar Cipher (Shift)</h2>
+    
+    <label for="caesarShift">Shift Amount (1 - 25):</label>
+    <input type="number" id="caesarShift" value="3" min="1" max="25">
+
+    <label for="caesarInput">Input Text:</label>
+    <textarea id="caesarInput" rows="4" placeholder="Enter message to shift..."></textarea>
+
+    <div class="button-group">
+      <button id="btnCaesarEncode">Encrypt (Shift Right)</button>
+      <button id="btnCaesarDecode">Decrypt (Shift Left)</button>
+    </div>
+
+    <label for="caesarOutput">Result:</label>
+    <textarea id="caesarOutput" class="output-box" rows="4" readonly placeholder="Result will appear here..."></textarea>
+  </div>
+
+  <!-- TOOL 3: BASE64 ENCODER / DECODER -->
+  <div class="tool-card">
+    <h2>3. Base64 Encoder / Decoder</h2>
+
+    <label for="base64Input">Input Text:</label>
+    <textarea id="base64Input" rows="4" placeholder="Enter plain text or Base64 string..."></textarea>
+
+    <div class="button-group">
+      <button id="btnBase64Encode">Encode to Base64</button>
+      <button id="btnBase64Decode">Decode from Base64</button>
+    </div>
+
+    <label for="base64Output">Result:</label>
+    <textarea id="base64Output" class="output-box" rows="4" readonly placeholder="Result will appear here..."></textarea>
+  </div>
+
+  <footer>
+    <p>Powered by JavaScript & GitHub Pages. All computations run locally in your browser.</p>
+  </footer>
+
+  <!-- Application Logic file attached at the very end of <body> -->
+  <script src="app.js"></script>
+</body>
+</html>
